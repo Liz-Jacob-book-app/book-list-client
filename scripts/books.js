@@ -1,3 +1,5 @@
+'use strict';
+
 (function(module){
     function Book(obj){
         this.book_id = obj.book_id,
