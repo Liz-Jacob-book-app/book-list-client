@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">  
-    <script id="books-template" type="text/x-handlebars-template"></script>
+    <script id="books-template" type="text/x-handlebars-template">
+        <section>
+            <h1>title: {{title}}</h1>
+            <h2>author:{{author}}</h2>
+            <p id='isbn'>isbn: {{isbn}}</p>
+            <img src='{{imageUrl}}'>
+            <p id='dsc'>review: {{description}}</p>
+        </section>
+    </script>
     <title>Book App</title>
 </head>
 <body>
@@ -21,6 +29,11 @@
     </nav>
     <section id="books">
         <!-- will show our books -->
+        <!-- <h1>title:</h1>
+        <h2>author:</h2>
+        <p id='isbn'>isbn:</p>
+        <img src='{{imageUrl}}'>
+        <p id='dsc'>review:</p> -->
     </section>
     <section id="about">
         <ul>
@@ -32,5 +45,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    
+    <script src="scripts/views/bookView.js"></script>
+    <script src="scripts/models/books.js"></script>
+    <script>$(document).ready(app.Book.fetchAll(app.bookView.initIndexPage));</script>
 </body>
 </html>
