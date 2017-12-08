@@ -12,9 +12,10 @@
 
     Book.all = [];
 
-    Book.fetchAll = () => {
+    Book.fetchAll = (cb) => {
         $.get('https://book-app-lj.herokuapp.com/api/v1/books/')
-            .done(Book.loadAll);
+            .then(Book.loadAll)
+            .then(cb);
     };
 
     Book.loadAll = (data) => {
@@ -28,5 +29,3 @@
 
     module.Book = Book;
 })(app);
-
-app.Book.fetchAll();
