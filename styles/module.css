@@ -1,0 +1,16 @@
+.heading-group-h1 {
+        text-align:left;
+    }
+
+.main-nav {
+    position: relative;
+}
+
+.icon-menu {
+    position:absolute;
+    bottom:150px;
+    font-size: 200%;
+    right:2%;
+    margin: 0 auto;
+}
+
