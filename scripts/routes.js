@@ -1,8 +1,8 @@
-page('/api/v1/book-app', (ctx, next) => {
+page('/book-list-client/', (ctx, next) => {
     app.Book.fetchAll(app.bookView.initIndexPage);
 });
 
-page('/books/:id', app.Book.fetchOne, app.bookView.initDetailPage);
+page('/books/:book_id', app.Book.fetchOne, app.bookView.initDetailPage);
 
 // page('/new', app.newView.initNewPage);
 
