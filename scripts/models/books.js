@@ -1,4 +1,7 @@
 'use strict';
+const app = app || {};
+
+const API_URL = 'http://localhost:3000';
 
 (function(module){
     function Book(obj){
@@ -12,12 +15,20 @@
 
     Book.all = [];
 
+    Book.fetchOne = (ctx, cb) => {
+        $.get(`${API_URL}/api/v1/books/:book_id`)
+            .then(data => {
+                ctx.book = new Book(data[0]);
+                cb();
+            })
+            .fail(console.error);
+    };
+
     Book.fetchAll = (cb) => {
-        $.get('https://book-app-lj.herokuapp.com/api/v1/books/')
+        $.get(`${API_URL}/api/v1/books/`)
             .then(Book.loadAll)
             .then(cb);
     };
-
     Book.loadAll = (data) => {
         Book.all = data.map(obj => new Book(obj));
     };
@@ -26,6 +37,7 @@
         const fillTemplate = Handlebars.compile($('#books-template').text());
         return fillTemplate(this);
     };
-
     module.Book = Book;
 })(app);
+
+//app.Book.fetchAll();
