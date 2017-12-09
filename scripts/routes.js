@@ -1,4 +1,4 @@
-page('/book-list-client/', (ctx, next) => {
+page('/', (ctx, next) => {
     app.Book.fetchAll(app.bookView.initIndexPage);
 });
 

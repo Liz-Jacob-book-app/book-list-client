@@ -1,7 +1,7 @@
 'use strict';
-const app = app || {};
+var app = app || {};
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
 
 (function(module){
     function Book(obj){
@@ -16,7 +16,7 @@ const API_URL = 'http://localhost:3000';
     Book.all = [];
 
     Book.fetchOne = (ctx, cb) => {
-        $.get(`${API_URL}/api/v1/books/:book_id`)
+        $.get(`${API_URL}/:book_id`)
             .then(data => {
                 ctx.book = new Book(data[0]);
                 cb();
@@ -25,7 +25,7 @@ const API_URL = 'http://localhost:3000';
     };
 
     Book.fetchAll = (cb) => {
-        $.get(`${API_URL}/api/v1/books/`)
+        $.get(`${API_URL}`)
             .then(Book.loadAll)
             .then(cb);
     };
