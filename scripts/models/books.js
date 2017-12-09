@@ -2,6 +2,7 @@
 var app = app || {};
 
 const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
+// const API_URL = 'https://localhost:5000';
 
 (function(module){
     function Book(obj){
@@ -16,7 +17,7 @@ const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
     Book.all = [];
 
     Book.fetchOne = (ctx, cb) => {
-        $.get(`${API_URL}/:book_id`)
+        $.get(`${API_URL}/${ctx.params.book_id}`)
             .then(data => {
                 ctx.book = new Book(data[0]);
                 cb();

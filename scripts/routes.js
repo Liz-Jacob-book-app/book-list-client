@@ -6,11 +6,11 @@ page('/books/:book_id', app.Book.fetchOne, app.bookView.initDetailPage);
 
 // page('/new', app.newView.initNewPage);
 
-page('/about', app.aboutView.initAboutPage);
+// page('/about', app.aboutView.initAboutPage);
 
-page('*', (ctx, next) => { 
+page('*', (ctx, next) => {
     console.log(ctx);
-    console.log('Nothing to see here!'); 
+    console.log('Nothing to see here!');
 });
- 
+
 page.start();
