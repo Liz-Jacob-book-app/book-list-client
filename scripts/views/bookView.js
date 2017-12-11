@@ -18,5 +18,20 @@ var app = app || {};
         $('#books').append(ctx.book.toHtml());
     };
 
+    bookView.initUpdatePage = (ctx) => {
+        $('main section').hide();
+        $('#update-book').parent().show();
+
+        $('#update-book input[name="author"]').val(ctx.book.author);
+
+        $('#update-book').on('submit', function(){
+            event.preventDefault();
+            const updatedData = {
+                author: $('#update-book input[name="author"].val()')
+            };
+            app.Book.update(ctx.book.id, updatedData);
+        });
+    };
+
     module.bookView = bookView;
 })(app);

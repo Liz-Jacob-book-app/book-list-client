@@ -16,6 +16,17 @@ const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
 
     Book.all = [];
 
+    Book.update = (id, data) => {
+        $.ajax({
+            url: `${API_URL}/api/v1/books/${id}`,
+            method: 'PUT',
+            data: data
+        })
+            .then(data => {
+                page(`/books/:{id}`);
+            });
+    };
+
     Book.fetchOne = (ctx, cb) => {
         $.get(`${API_URL}/${ctx.params.book_id}`)
             .then(data => {
