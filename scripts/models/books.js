@@ -1,8 +1,8 @@
 'use strict';
 var app = app || {};
 
-const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
-// const API_URL = 'https://localhost:5000';
+// const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
+const API_URL = 'http://localhost:5000/api/v1/books';
 
 (function(module){
     function Book(obj){
@@ -16,15 +16,20 @@ const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
 
     Book.all = [];
 
-    Book.update = (id, data) => {
-        $.ajax({
-            url: `${API_URL}/api/v1/books/${id}`,
-            method: 'PUT',
-            data: data
-        })
-            .then(data => {
-                page(`/books/:{id}`);
-            });
+    // Book.update = (id, data) => {
+    //     $.ajax({
+    //         url: `${API_URL}/api/v1/books/${id}`,
+    //         method: 'PUT',
+    //         data: data
+    //     })
+    //         .then(data => {
+    //             page(`/books/:{id}`);
+    //         });
+    // };
+
+    Book.create = newBook => {
+        $.post(`${API_URL}`, newBook)
+            .then(console.log);
     };
 
     Book.fetchOne = (ctx, cb) => {
@@ -35,7 +40,6 @@ const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
             })
             .fail(console.error);
     };
-
     Book.fetchAll = (cb) => {
         $.get(`${API_URL}`)
             .then(Book.loadAll)
@@ -44,7 +48,6 @@ const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
     Book.loadAll = (data) => {
         Book.all = data.map(obj => new Book(obj));
     };
-
     Book.prototype.toHtml = function () {
         const fillTemplate = Handlebars.compile($('#books-template').text());
         return fillTemplate(this);
