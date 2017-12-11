@@ -14,27 +14,42 @@
             <a href='/books/{{book_id}}'><h1>title: {{title}}</h1></a>
             <h2>author:{{author}}</h2>
             <p id='isbn'>isbn: {{isbn}}</p>
-            <img src='{{{imageUrl}}}'>
-            <p id='dsc'>review: {{description}}</p>
+            <img class="float-right" src=''>{{imageUrl}}
+            <p id='desc'>review: {{description}}</p>
         </section>
-    </script>
     <title>Book App</title>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="/"></a>Books</li>
+            <li><a href="#"></a>Books</li>
             <li><a href="/about" id="about">About</a></li>
+            <li><a href="/new"></a>Add Book</li>
         </ul>
     </nav>
     <main>
         <section id="books">
             <!-- will show our books -->
-            <!-- <h1>title:</h1>
-            <h2>author:</h2>
-            <p id='isbn'>isbn:</p>
-            <img src='{{imageUrl}}'>
-            <p id='dsc'>review:</p> -->
+        </section>
+           <section id="add" class="tab-content">
+                <h1>Add a Book!</h1>
+                <form action="#" id="new-form">
+                  <label>
+                    <input type="text" id="title" placeholder="Book Title" required>
+                  </label>
+                  <label>
+                    <input type="text" id="author" placeholder="Author" required>
+                  </label>
+                  <label>
+                  <input type="text" id="isbn" placeholder="Book ISBN" required>
+                    </label>
+                  <label>
+                    <input type="text" id="image_url" placeholder="Link URL to Book Cover" required>
+                  </label>
+                  <label>
+                   <textarea id="description" rows="8" cols="50" placeholder="Description" required></textarea>
+                  <button type="submit">Submit</button>
+                </form>
         </section>
         <section id="about">
             <ul>
