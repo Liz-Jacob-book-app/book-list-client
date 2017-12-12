@@ -23,11 +23,32 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/"></a>Books</li>
+            <li><a href="/">Books</a></li>
             <li><a href="/about" id="about">About</a></li>
+            <li><a href="/new">new</a></li>
         </ul>
     </nav>
     <main>
+        <section id="add">
+                <h1>Add a Book!</h1>
+                <form action="submit" id="new-form">
+                    <label>
+                    <input type="text" id="title" placeholder="Book Title" required>
+                    </label>
+                    <label>
+                    <input type="text" id="author" placeholder="Author" required>
+                    </label>
+                    <label>
+                    <input type="text" id="isbn" placeholder="Book ISBN" required>
+                    </label>
+                    <label>
+                    <input type="text" id="image_url" placeholder="Link URL to Book Cover" required>
+                    </label>
+                    <label>
+                    <textarea id="description" rows="8" cols="50" placeholder="Description" required></textarea>
+                    <button id="submitButton" type="submit">Submit</button>
+                </form>
+        </section>
         <section id="books">
             <!-- will show our books -->
             <!-- <h1>title:</h1>
@@ -52,6 +73,6 @@
     <script src="scripts/views/bookView.js"></script>
     <script src="scripts/models/books.js"></script>
     <script src="scripts/routes.js"></script>
-    <script>$(document).ready(app.Book.fetchAll(app.bookView.initIndexPage));</script>
+    <!-- <script>app.Book.fetchAll(app.bookView.initIndexPage).initDetailPage;</script> -->
 </body>
 </html>
