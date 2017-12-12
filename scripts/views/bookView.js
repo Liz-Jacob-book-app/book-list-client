@@ -6,7 +6,7 @@ var app = app || {};
     const bookView = {};
 
     bookView.initIndexPage = () => {
-        // $('#add').hide();
+        $('#updateRecord').hide();
         $('main section').hide();
         $('#books').empty().show();
         console.log(app.Book.all);
@@ -14,9 +14,13 @@ var app = app || {};
     };
 
     bookView.initDetailPage = (ctx) => {
-        $('main section').hide();
+        $('#updateRecord').show();
         $('#books').empty().show();
         $('#books').append(ctx.book.toHtml());
+        $('button[data-method="updateBook"]').on('click', function(){
+            event.preventDefault();
+            page(`/update/${ctx.params.book_id}`);
+        });
     };
 
     bookView.initNewPage = (ctx) => {
@@ -37,16 +41,23 @@ var app = app || {};
             console.log(newBook);
             app.Book.create(newBook);
         });
+    };
 
-        // $('#update-book input[name="author"]').val(ctx.book.author);
+    bookView.initUpdatePage = (ctx) => {
+        $('main section').hide();
 
-        // $('#update-book').on('submit', function(){
-        //     event.preventDefault();
-        //     const updatedData = {
-        //         author: $('#update-book input[name="author"].val()')
-        //     };
-        //     app.Book.update(ctx.book.id, updatedData);
-        // });
+        $('#update').show();
+
+        $(`#update input[id='title']`).val(ctx.book.title);
+        $(`#update input[id='author']`).val(ctx.book.author);
+        $(`#update input[id='isbn']`).val(ctx.book.isbn);
+        $(`#update input[id='image_url']`).val(ctx.book.image_url);
+        $(`#update textarea[id='description']`).val(ctx.book.description);
+
+        $('#update').on('submit', function(){
+            event.preventDefault();
+            console.log('asdfasdf');
+        });
     };
 
     module.bookView = bookView;
