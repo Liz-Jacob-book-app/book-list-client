@@ -49,6 +49,7 @@
                     <button id="submitButton" type="submit">Submit</button>
                 </form>
         </section>
+
         <section id="books">
             <!-- will show our books -->
             <!-- <h1>title:</h1>
@@ -56,6 +57,27 @@
             <p id='isbn'>isbn:</p>
             <img src='{{imageUrl}}'>
             <p id='dsc'>review:</p> -->
+        </section>
+        <button type="submit" data-method="updateBook">update</button>
+        <section id="update">
+                <h1>Update!!</h1>
+                <form action="submit" id="new-form">
+                    <label>
+                    <input type="text" id="title" required>
+                    </label>
+                    <label>
+                    <input type="text" id="author" required>
+                    </label>
+                    <label>
+                    <input type="text" id="isbn" required>
+                    </label>
+                    <label>
+                    <input type="text" id="image_url" required>
+                    </label>
+                    <label>
+                    <textarea id="description" rows="8" cols="50" required></textarea>
+                    <button id="updateButton" type="submit">Update</button>
+                </form>
         </section>
         <section id="about">
             <ul>
