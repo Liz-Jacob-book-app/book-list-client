@@ -8,9 +8,11 @@ var app = app || {};
     bookView.initIndexPage = () => {
         $('#updateRecord').hide();
         $('main section').hide();
+        $('.search-view').show();
         $('#books').empty().show();
         $('button[data-method="search"]').on('click', function(){
             event.preventDefault();
+            // app.Book.find();
             page(`/search`);
         });
         console.log(app.Book.all);
@@ -64,6 +66,7 @@ var app = app || {};
     };
 
     bookView.initSearchResultsPage = (ctx) => {
+        event.preventDefault();
         $('main section').hide();
         $('.search-results').show();
         $('#search-content').empty().show();
