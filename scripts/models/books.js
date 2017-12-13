@@ -16,17 +16,6 @@ const API_URL = 'http://localhost:5000/api/v1/books';
 
     Book.all = [];
 
-    // Book.update = (id, data) => {
-    //     $.ajax({
-    //         url: `${API_URL}/api/v1/books/${id}`,
-    //         method: 'PUT',
-    //         data: data
-    //     })
-    //         .then(data => {
-    //             page(`/books/:{id}`);
-    //         });
-    // };
-
     Book.create = newBook => {
         $.post(`${API_URL}`, newBook)
             .then(console.log);
@@ -54,5 +43,3 @@ const API_URL = 'http://localhost:5000/api/v1/books';
     };
     module.Book = Book;
 })(app);
-
-//app.Book.fetchAll();
