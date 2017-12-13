@@ -29,6 +29,18 @@
         </ul>
     </nav>
     <main>
+        <section class="search-view">
+            <form>
+                <label for="search">Search for Books</label>
+                <input type="text" name="search" row="1" cols="50">
+                <button id="submit" data-method="search">Submit</button>
+            </form>
+        </section>
+        <section class="search-results">
+            <ul id="search-content">
+
+            </ul>
+        </section>
         <section id="add">
                 <h1>Add a Book!</h1>
                 <form action="submit" id="new-form">

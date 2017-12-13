@@ -9,6 +9,10 @@ var app = app || {};
         $('#updateRecord').hide();
         $('main section').hide();
         $('#books').empty().show();
+        $('button[data-method="search"]').on('click', function(){
+            event.preventDefault();
+            page(`/search`);
+        });
         console.log(app.Book.all);
         app.Book.all.map(book => $('#books').append(book.toHtml()));
     };
@@ -45,7 +49,6 @@ var app = app || {};
 
     bookView.initUpdatePage = (ctx) => {
         $('main section').hide();
-
         $('#update').show();
 
         $(`#update input[id='title']`).val(ctx.book.title);
@@ -57,6 +60,15 @@ var app = app || {};
         $('#update').on('submit', function(){
             event.preventDefault();
             console.log('asdfasdf');
+        });
+    };
+
+    bookView.initSearchResultsPage = (ctx) => {
+        $('main section').hide();
+        $('.search-results').show();
+        $('#search-content').empty().show();
+        module.Book.all.map(book => {
+            $('#search-content').append(ctx.book.toHtml());
         });
     };
 
