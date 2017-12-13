@@ -1,8 +1,8 @@
 'use strict';
 var app = app || {};
 
-// const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
-const API_URL = 'http://localhost:5000/api/v1/books';
+const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
+// const API_URL = 'http://localhost:5000/api/v1/books';
 
 (function(module){
     function Book(obj){
@@ -54,5 +54,3 @@ const API_URL = 'http://localhost:5000/api/v1/books';
     };
     module.Book = Book;
 })(app);
-
-//app.Book.fetchAll();
