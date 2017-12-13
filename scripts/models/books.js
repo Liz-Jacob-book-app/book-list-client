@@ -1,7 +1,7 @@
 'use strict';
 var app = app || {};
 
-const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
+const API_URL = 'https://book-app-lj.herokuapp.com/api/v1';
 // const API_URL = 'http://localhost:5000/api/v1/books';
 
 (function(module){
@@ -17,12 +17,12 @@ const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
     Book.all = [];
 
     Book.create = newBook => {
-        $.post(`${API_URL}`, newBook)
+        $.post(`${API_URL}/books`, newBook)
             .then(console.log);
     };
 
     Book.fetchOne = (ctx, cb) => {
-        $.get(`${API_URL}/${ctx.params.book_id}`)
+        $.get(`${API_URL}/books/${ctx.params.book_id}`)
             .then(data => {
                 ctx.book = new Book(data[0]);
                 cb();
@@ -30,10 +30,20 @@ const API_URL = 'https://book-app-lj.herokuapp.com/api/v1/books';
             .fail(console.error);
     };
     Book.fetchAll = (cb) => {
-        $.get(`${API_URL}`)
+        $.get(`${API_URL}/books`)
             .then(Book.loadAll)
             .then(cb);
     };
+
+    Book.find = (cb) => {
+        $.get(`${API_URL}/search`)
+            .then(data => {
+                data.book = new Book(data[0]);
+                console.log(data.book);
+                cb();
+            });
+    };
+
     Book.loadAll = (data) => {
         Book.all = data.map(obj => new Book(obj));
     };

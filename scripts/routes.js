@@ -8,7 +8,7 @@ page('/new', app.bookView.initNewPage);
 
 page('/update/:book_id', app.Book.fetchOne, app.bookView.initUpdatePage);
 
-page('/?search=clouds', app.bookView.initSearchResultsPage);
+page('/search', app.Book.find, app.bookView.initSearchResultsPage);
 
 // page('/about', app.aboutView.initAboutPage);
 
